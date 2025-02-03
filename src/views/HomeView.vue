@@ -197,7 +197,7 @@ const toggleMenu = () => {
     </section>
 
     <!-- Our Works Section -->
-    <section id="works" class="py-20 px-6">
+    <section id="works" class="py-20 px-6 bg-dark">
         <div class="max-w-4xl mx-auto ">
             <h3 class="text-3xl font-bold text-gold text-center">Our Works</h3>
             <div class="mt-8 grid grid-cols-1 md:grid-cols-2 gap-6">
@@ -219,7 +219,7 @@ const toggleMenu = () => {
 
     <!-- Footer -->
     <footer class="bg-black text-center py-8">
-        <div>
+        <div class="text-white">
             <h3 class="text-xl font-bold text-gold">YG Movie Productions</h3>
             <p class="mt-2">Contact: info@ygmovies.erp-55.com | Phone: +123456789</p>
             <div class="mt-4 space-x-4">
