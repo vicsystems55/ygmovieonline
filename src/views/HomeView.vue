@@ -1,53 +1,90 @@
 <script setup>
 import heroBg from '@/assets/img/33450.jpg';
+import { ref } from "vue";
+import logo from "@/assets/img/logo.png"; // Importing the logo
 
 const backgroundStyle = {
   backgroundImage: `url(${heroBg})`,
   backgroundSize: 'cover',
   backgroundPosition: 'center center',
 };
+
+// Reactive state for the mobile menu
+const isMenuOpen = ref(false);
+
+// Function to toggle the menu
+const toggleMenu = () => {
+  isMenuOpen.value = !isMenuOpen.value;
+};
 </script>
+
 <template>
   <div class="home">
     <nav class="fixed w-full bg-black shadow-lg p-4 z-20">
-        <div class="container mx-auto flex justify-between items-center">
-            <div class="flex items-center space-x-3">
-                <img src="../assets/img/logo.png" alt="YG Logo" class="h-10">
-                <h1 class="text-lg font-bold text-gold">YG Movie Productions</h1>
-            </div>
-            <div class="hidden md:flex space-x-6"> <a href="#hero" class="hover:text-gold">Home</a>
-                <a href="#about" class="hover:text-gold">About Us</a>
-                <a href="#works" class="hover:text-gold">Our Works</a>
-                <a href="#join" class="hover:text-gold">Get Started</a>
-            </div>
-            <div class="md:hidden"> <button id="menuBtn" class="text-gold">
-                    <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24"
-                        stroke="currentColor">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                            d="M4 6h16M4 12h16M4 18h16"></path>
-                    </svg>
-                </button>
-            </div>
-        </div>
+    <div class="container mx-auto flex justify-between items-center">
+      <!-- Logo -->
+      <div class="flex items-center space-x-3">
+        <img :src="logo" alt="YG Logo" class="h-10" />
+        <h1 class="text-lg font-bold text-gold">YG Movie Productions</h1>
+      </div>
 
-        <div id="mobileMenu" class="hidden fixed top-0 left-0 w-full h-full bg-black/80 z-30">
-            <div class="bg-black w-3/4 h-full p-6">
-                <button id="closeMenuBtn" class="text-gold absolute top-4 right-4">
-                    <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24"
-                        stroke="currentColor">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12">
-                        </path>
-                    </svg>
-                </button>
-                <ul class="flex flex-col space-y-4 mt-12">
-                    <li><a href="#hero" class="text-white hover:text-gold">Home</a></li>
-                    <li><a href="#about" class="text-white hover:text-gold">About Us</a></li>
-                    <li><a href="#works" class="text-white hover:text-gold">Our Works</a></li>
-                    <li><a href="#join" class="text-white hover:text-gold">Get Started</a></li>
-                </ul>
-            </div>
-        </div>
-    </nav>
+      <!-- Desktop Menu -->
+      <div class="hidden md:flex space-x-6">
+        <a href="#hero" class="hover:text-gold">Home</a>
+        <a href="#about" class="hover:text-gold">About Us</a>
+        <a href="#works" class="hover:text-gold">Our Works</a>
+        <a href="#join" class="hover:text-gold">Get Started</a>
+      </div>
+
+      <!-- Mobile Menu Button -->
+      <div class="md:hidden">
+        <button @click="toggleMenu" class="text-gold">
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            class="h-6 w-6"
+            fill="none"
+            viewBox="0 0 24 24"
+            stroke="currentColor"
+          >
+            <path
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              stroke-width="2"
+              d="M4 6h16M4 12h16M4 18h16"
+            ></path>
+          </svg>
+        </button>
+      </div>
+    </div>
+
+    <!-- Mobile Menu -->
+    <div v-if="isMenuOpen" class="fixed top-0 left-0 w-full h-full bg-black/80 z-30">
+      <div class="bg-black w-3/4 h-full p-6 relative">
+        <button @click="toggleMenu" class="text-gold absolute top-4 right-4">
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            class="h-6 w-6"
+            fill="none"
+            viewBox="0 0 24 24"
+            stroke="currentColor"
+          >
+            <path
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              stroke-width="2"
+              d="M6 18L18 6M6 6l12 12"
+            ></path>
+          </svg>
+        </button>
+        <ul class="flex flex-col space-y-4 mt-12">
+          <li><a href="#hero" class="text-white hover:text-gold" @click="toggleMenu">Home</a></li>
+          <li><a href="#about" class="text-white hover:text-gold" @click="toggleMenu">About Us</a></li>
+          <li><a href="#works" class="text-white hover:text-gold" @click="toggleMenu">Our Works</a></li>
+          <li><a href="#join" class="text-white hover:text-gold" @click="toggleMenu">Get Started</a></li>
+        </ul>
+      </div>
+    </div>
+  </nav>
 
 
 
