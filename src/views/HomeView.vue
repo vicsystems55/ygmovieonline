@@ -20,7 +20,7 @@ const toggleMenu = () => {
 
 <template>
   <div class="home">
-    <nav class="fixed w-full bg-black shadow-lg p-4 z-20">
+    <nav class="fixed w-full bg-black shadow-lg p-4 z-20 text-white">
     <div class="container mx-auto flex justify-between items-center">
       <!-- Logo -->
       <div class="flex items-center space-x-3">
