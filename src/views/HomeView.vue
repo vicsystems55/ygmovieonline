@@ -93,7 +93,7 @@ const toggleMenu = () => {
     >
     <div class="absolute inset-0 bg-gradient-to-b from-black/90 to-black/50"></div>
     <div class="relative z-10 px-4">
-        <h2 class="text-5xl sm:text-8xl font-bold text-gold/90 drop-shadow-lg leading-tight">Join the Future of Filmmaking</h2>
+        <h2 class="text-5xl sm:text-8xl font-bold text-gold/90 drop-shadow-lg leading-tight text-white">Join the Future of Filmmaking</h2>
         <div class="max-w-xl mx-auto">
             <p class="mt-5 py-5 text-white/90 drop-shadow-md text-base sm:text-xl">
                 Young Gold seeks passionate content creators for collaboration! Gain exposure, industry connections, and exclusive opportunities with YG Movie Productions. Partner with us and showcase your talent—sign up today!
