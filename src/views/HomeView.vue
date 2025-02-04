@@ -277,7 +277,7 @@ export default {
         }
 
 
-        const response = await axios.post('/yg-membership-submission', formData, {
+        const response = await axios.post(process.env.VUE_APP_URL+'/api/yg-membership-submission', formData, {
           headers: {
             'Content-Type': 'multipart/form-data', // Important for file uploads
           },
