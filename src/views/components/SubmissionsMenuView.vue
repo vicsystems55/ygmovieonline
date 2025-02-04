@@ -27,7 +27,7 @@
       </div>
     </div>
   
-      <div class="card bg-white rounded-lg shadow-md p-6 overflow-x-auto">
+    <div class="card bg-white rounded-lg shadow-md p-6 ">
         <div class="flex justify-between items-center mb-4">
           <h2 class="text-lg font-semibold">Submissions</h2>
           <div class="flex space-x-2">
