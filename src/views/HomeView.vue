@@ -151,48 +151,55 @@ const toggleMenu = () => {
     <section id="join" class="py-20 px-6 bg-gold text-black">
         <div class="max-w-2xl mx-auto text-center">
             <h3 class="text-3xl font-bold">Join Us Now</h3>
-            <form class="mt-8 space-y-4">
-                <div>
-                    <label for="fullName" class="block text-left font-medium">Full Name <span class="text-red-500">*</span></label>
-                    <input type="text" id="fullName" name="fullName" placeholder="Full Name" class="w-full p-3 border rounded mt-1" required>
-                </div>
-                <div>
-                    <label for="email" class="block text-left font-medium">Email <span class="text-red-500">*</span></label>
-                    <input type="email" id="email" name="email" placeholder="Email" class="w-full p-3 border rounded mt-1" required>
-                </div>
-                <div>
-                    <label for="phone" class="block text-left font-medium">Phone Number <span class="text-red-500">*</span></label>
-                    <input type="tel" id="phone" name="phone" placeholder="Phone Number" class="w-full p-3 border rounded mt-1" required>
-                </div>
-                <div>
-                    <label for="address" class="block text-left font-medium">Address <span class="text-red-500">*</span></label>
-                    <input type="text" id="address" name="address" placeholder="Address" class="w-full p-3 border rounded mt-1" required>
-                </div>
-    
-                <div>
-                    <label for="facebook" class="block text-left font-medium">Facebook Profile URL</label>
-                    <input type="url" id="facebook" name="facebook" placeholder="Facebook URL" class="w-full p-3 border rounded mt-1">
-                </div>
-                <div>
-                    <label for="instagram" class="block text-left font-medium">Instagram Profile URL</label>
-                    <input type="url" id="instagram" name="instagram" placeholder="Instagram URL" class="w-full p-3 border rounded mt-1">
-                </div>
-                <div>
-                    <label for="tiktok" class="block text-left font-medium">TikTok Profile URL</label>
-                    <input type="url" id="tiktok" name="tiktok" placeholder="TikTok URL" class="w-full p-3 border rounded mt-1">
-                </div>
-                <div>
-                    <label for="twitter" class="block text-left font-medium">Twitter Profile URL</label>
-                    <input type="url" id="twitter" name="twitter" placeholder="Twitter URL" class="w-full p-3 border rounded mt-1">
-                </div>
-                <div>
-                    <label for="other" class="block text-left font-medium">Other Social Media/Portfolio Link</label>
-                    <input type="url" id="other" name="other" placeholder="Other Link" class="w-full p-3 border rounded mt-1">
-                </div>
-    
-                <input type="file" class="w-full p-3 border rounded">
-                <button class="w-full bg-black text-white py-3 font-bold rounded">Submit</button>
-            </form>
+            <form class="mt-8 space-y-4" @submit.prevent="submitForm">
+      <div>
+        <label for="fullName" class="block text-left font-medium">Full Name <span class="text-red-500">*</span></label>
+        <input type="text" id="fullName" v-model="formData.fullName" placeholder="Full Name" class="w-full p-3 border rounded mt-1" required>
+      </div>
+      <div>
+        <label for="email" class="block text-left font-medium">Email <span class="text-red-500">*</span></label>
+        <input type="email" id="email" v-model="formData.email" placeholder="Email" class="w-full p-3 border rounded mt-1" required>
+      </div>
+      <div>
+        <label for="phone" class="block text-left font-medium">Phone Number <span class="text-red-500">*</span></label>
+        <input type="tel" id="phone" v-model="formData.phone" placeholder="Phone Number" class="w-full p-3 border rounded mt-1" required>
+      </div>
+      <div>
+        <label for="address" class="block text-left font-medium">Address <span class="text-red-500">*</span></label>
+        <input type="text" id="address" v-model="formData.address" placeholder="Address" class="w-full p-3 border rounded mt-1" required>
+      </div>
+
+      <div>
+        <label for="facebook" class="block text-left font-medium">Facebook Profile URL</label>
+        <input type="url" id="facebook" v-model="formData.facebook" placeholder="Facebook URL" class="w-full p-3 border rounded mt-1">
+      </div>
+      <div>
+        <label for="instagram" class="block text-left font-medium">Instagram Profile URL</label>
+        <input type="url" id="instagram" v-model="formData.instagram" placeholder="Instagram URL" class="w-full p-3 border rounded mt-1">
+      </div>
+      <div>
+        <label for="tiktok" class="block text-left font-medium">TikTok Profile URL</label>
+        <input type="url" id="tiktok" v-model="formData.tiktok" placeholder="TikTok URL" class="w-full p-3 border rounded mt-1">
+      </div>
+      <div>
+        <label for="twitter" class="block text-left font-medium">Twitter Profile URL</label>
+        <input type="url" id="twitter" v-model="formData.twitter" placeholder="Twitter URL" class="w-full p-3 border rounded mt-1">
+      </div>
+      <div>
+        <label for="other" class="block text-left font-medium">Other Social Media/Portfolio Link</label>
+        <input type="url" id="other" v-model="formData.other" placeholder="Other Link" class="w-full p-3 border rounded mt-1">
+      </div>
+
+      <div>
+        <label for="file" class="block text-left font-medium">File Upload</label>
+        <input type="file" id="file" ref="file" class="w-full p-3 border rounded">
+      </div>
+
+      <button type="submit" :disabled="isLoading" class="w-full bg-black text-white py-3 font-bold rounded">
+        <span v-if="isLoading">Please Wait...</span>
+        <span v-else>Submit</span>
+      </button>
+    </form>
         </div>
     </section>
 
@@ -234,13 +241,64 @@ const toggleMenu = () => {
 </template>
 
 <script>
-// @ is an alias to /src
-// import HelloWorld from '@/components/HelloWorld.vue'
+import axios from 'axios';
 
 export default {
-  name: 'HomeView',
-  components: {
+  data() {
+    return {
+      isLoading: false,
+      formData: {
+        fullName: '',
+        email: '',
+        phone: '',
+        address: '',
+        facebook: '',
+        instagram: '',
+        tiktok: '',
+        twitter: '',
+        other: '',
+      },
+    };
+  },
+  methods: {
+    async submitForm() {
+      this.isLoading = true;
 
-  }
-}
+      try {
+        const formData = new FormData(); // Create a FormData object
+        for (const key in this.formData) {
+          formData.append(key, this.formData[key]); // Append form data
+        }
+
+        // Handle file upload separately
+        const fileInput = this.$refs.file;
+        if (fileInput.files.length > 0) {
+          formData.append('file', fileInput.files[0]);
+        }
+
+
+        const response = await axios.post('/yg-membership-submission', formData, {
+          headers: {
+            'Content-Type': 'multipart/form-data', // Important for file uploads
+          },
+        });
+
+        console.log('Success:', response.data);
+        alert('Membership application submitted successfully!');
+
+        // Reset form data (except file input)
+        for (const key in this.formData) {
+          this.formData[key] = '';
+        }
+        fileInput.value = ''; // Clear the file input
+
+      } catch (error) {
+        console.error('Error:', error);
+        alert('There was an error submitting your application. Please try again.');
+      } finally {
+        this.isLoading = false;
+      }
+    },
+  },
+};
 </script>
