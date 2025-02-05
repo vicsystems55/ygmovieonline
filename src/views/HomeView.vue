@@ -277,14 +277,20 @@ export default {
           },
         });
 
+
+
         console.log('Success:', response.data);
         alert('Membership application submitted successfully!');
+
 
         // Reset form data (except file input)
         for (const key in this.formData) {
           this.formData[key] = '';
         }
         fileInput.value = ''; // Clear the file input
+
+        return this.$router.push('/success');
+
 
       } catch (error) {
         console.error('Error:', error);
