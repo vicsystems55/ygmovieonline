@@ -135,7 +135,7 @@ const toggleMenu = () => {
           <div>
             <label for="fullName" class="block text-left font-medium">Full Name <span
                 class="text-red-500">*</span></label>
-            <input type="text" id="fullName" v-model="formData.fullName" placeholder="Full Name"
+            <input type="text" id="fullName" v-model="formData.full_name" placeholder="Full Name"
               class="w-full p-3 border rounded mt-1" required>
           </div>
           <div>
@@ -242,7 +242,7 @@ export default {
     return {
       isLoading: false,
       formData: {
-        fullName: '',
+        full_name: '',
         email: '',
         phone: '',
         address: '',
