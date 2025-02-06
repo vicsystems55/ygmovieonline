@@ -131,7 +131,13 @@ const toggleMenu = () => {
     <section id="join" class="py-20 px-6 bg-gold text-black">
       <div class="max-w-2xl mx-auto text-center">
         <h3 class="text-3xl font-bold">Join Us Now</h3>
-        <form class="mt-8 space-y-4" @submit.prevent="submitForm">
+        <form class="mt-8 space-y-4" @submit.prevent="submitForm" >
+
+          <div>
+            <label for="file" class="block text-left font-medium">File Upload <span class="text-red-500">*</span>
+              (Maximum size 50MB, Maximum 5 minutes)</label>
+            <input type="file" id="file" ref="file" class="w-full p-3 border rounded">
+          </div>
           <div>
             <label for="fullName" class="block text-left font-medium">Full Name <span
                 class="text-red-500">*</span></label>
@@ -181,11 +187,7 @@ const toggleMenu = () => {
               class="w-full p-3 border rounded mt-1">
           </div>
 
-          <div>
-            <label for="file" class="block text-left font-medium">File Upload <span class="text-red-500">*</span>
-              (Maximum size 50MB, Maximum 5 minutes)</label>
-            <input type="file" id="file" ref="file" class="w-full p-3 border rounded">
-          </div>
+   
 
           <button type="submit" :disabled="isLoading" class="w-full bg-black text-white py-3 font-bold rounded">
             <span v-if="isLoading">Please Wait...</span>
