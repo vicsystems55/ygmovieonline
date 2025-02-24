@@ -222,7 +222,7 @@ const toggleMenu = () => {
     <footer class="bg-black text-center py-8">
       <div class="text-white">
         <h3 class="text-xl font-bold text-gold">YG Movie Productions</h3>
-        <p class="mt-2">Contact: younggoldproductions@gmail.com | Phone: +123456789</p>
+        <p class="mt-2">Contact: younggoldproductions@gmail.com</p>
         <div class="mt-4 space-x-4">
           <a href="https://www.facebook.com/profile.php?id=61559220190668" class="text-gold"><i
               class="fab fa-facebook"></i></a>
