@@ -1,22 +1,35 @@
 <script setup>
 import heroBg from '@/assets/img/33450.jpg';
-import { ref } from "vue";
-import logo from "@/assets/img/logo.png"; // Importing the logo
+import logo from "@/assets/img/logo.png";
+import { ref, onMounted } from "vue";
 
+// Background styling
 const backgroundStyle = {
   backgroundImage: `url(${heroBg})`,
   backgroundSize: 'cover',
   backgroundPosition: 'center center',
 };
 
-// Reactive state for the mobile menu
+// Menu state
 const isMenuOpen = ref(false);
-
-// Function to toggle the menu
 const toggleMenu = () => {
   isMenuOpen.value = !isMenuOpen.value;
 };
+
+// Modal state
+const showModal = ref(false);
+const closeModal = () => {
+  showModal.value = false;
+};
+
+// Trigger modal after delay
+onMounted(() => {
+  setTimeout(() => {
+    showModal.value = true;
+  }, 5000);
+});
 </script>
+
 
 <template>
   <div class="home">
@@ -232,6 +245,28 @@ const toggleMenu = () => {
         </div>
       </div>
     </footer>
+
+    <!-- New Movie Alert Modal -->
+<div v-if="showModal" class="fixed inset-0 bg-black/80 z-50 flex items-center justify-center p-4">
+  <div class="bg-black rounded-xl shadow-lg w-full max-w-2xl relative overflow-hidden">
+    <button @click="closeModal" class="absolute top-4 right-4 text-white hover:text-red-500 text-2xl font-bold z-10">&times;</button>
+    <div class="p-6 text-center">
+      <h2 class="text-2xl font-bold mb-4 text-white">🎬 New Movie Alert</h2>
+      <div class="w-full" style="position: relative; padding-bottom: 56.25%; height: 0;">
+       <iframe
+  class="w-full h-64 md:h-96"
+  src="https://www.youtube.com/embed/_BgWoaxUXmc?autoplay=1&mute=1"
+  title="New Movie Alert"
+  frameborder="0"
+  allow="autoplay; encrypted-media"
+  allowfullscreen
+></iframe>
+
+      </div>
+    </div>
+  </div>
+</div>
+
 
   </div>
 </template>
