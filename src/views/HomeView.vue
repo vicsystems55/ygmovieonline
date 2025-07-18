@@ -25,7 +25,7 @@ const closeModal = () => {
 // Trigger modal after delay
 onMounted(() => {
   setTimeout(() => {
-    showModal.value = true;
+    // showModal.value = true;
   }, 5000);
 });
 </script>
@@ -141,72 +141,21 @@ onMounted(() => {
 
     </section>
 
+    <!-- JOIN SECTION (new) -->
     <section id="join" class="py-20 px-6 bg-gold text-black">
-      <div class="max-w-2xl mx-auto text-center">
-        <h3 class="text-3xl font-bold">Join Us Now</h3>
-        <form class="mt-8 space-y-4" @submit.prevent="submitForm" >
-
-          <div>
-            <label for="file" class="block text-left font-medium">File Upload <span class="text-red-500">*</span>
-              (Maximum size 50MB, Maximum 5 minutes)</label>
-            <input type="file" id="file" ref="file" class="w-full p-3 border rounded">
-          </div>
-          <div>
-            <label for="fullName" class="block text-left font-medium">Full Name <span
-                class="text-red-500">*</span></label>
-            <input type="text" id="fullName" v-model="formData.full_name" placeholder="Full Name"
-              class="w-full p-3 border rounded mt-1" required>
-          </div>
-          <div>
-            <label for="email" class="block text-left font-medium">Email <span class="text-red-500">*</span></label>
-            <input type="email" id="email" v-model="formData.email" placeholder="Email"
-              class="w-full p-3 border rounded mt-1" required>
-          </div>
-          <div>
-            <label for="phone" class="block text-left font-medium">Phone Number <span
-                class="text-red-500">*</span></label>
-            <input type="tel" id="phone" v-model="formData.phone" placeholder="Phone Number"
-              class="w-full p-3 border rounded mt-1" required>
-          </div>
-          <div>
-            <label for="address" class="block text-left font-medium">Address <span class="text-red-500">*</span></label>
-            <input type="text" id="address" v-model="formData.address" placeholder="Address"
-              class="w-full p-3 border rounded mt-1" required>
-          </div>
-
-          <div>
-            <label for="facebook" class="block text-left font-medium">Facebook Profile URL</label>
-            <input type="url" id="facebook" v-model="formData.facebook" placeholder="Facebook URL"
-              class="w-full p-3 border rounded mt-1">
-          </div>
-          <div>
-            <label for="instagram" class="block text-left font-medium">Instagram Profile URL</label>
-            <input type="url" id="instagram" v-model="formData.instagram" placeholder="Instagram URL"
-              class="w-full p-3 border rounded mt-1">
-          </div>
-          <div>
-            <label for="tiktok" class="block text-left font-medium">TikTok Profile URL</label>
-            <input type="url" id="tiktok" v-model="formData.tiktok" placeholder="TikTok URL"
-              class="w-full p-3 border rounded mt-1">
-          </div>
-          <div>
-            <label for="twitter" class="block text-left font-medium">Twitter Profile URL</label>
-            <input type="url" id="twitter" v-model="formData.twitter" placeholder="Twitter URL"
-              class="w-full p-3 border rounded mt-1">
-          </div>
-          <div>
-            <label for="other" class="block text-left font-medium">Other Social Media/Portfolio Link</label>
-            <input type="url" id="other" v-model="formData.other" placeholder="Other Link"
-              class="w-full p-3 border rounded mt-1">
-          </div>
-
-   
-
-          <button type="submit" :disabled="isLoading" class="w-full bg-black text-white py-3 font-bold rounded">
-            <span v-if="isLoading">Please Wait...</span>
-            <span v-else>Submit</span>
-          </button>
-        </form>
+      <div class="max-w-4xl mx-auto flex flex-col md:flex-row items-center gap-8">
+        <div class="md:w-1/2 flex justify-center">
+          <img src="../assets/img/about.jpg" alt="Join Us" class="rounded-2xl shadow-2xl w-full max-w-md">
+        </div>
+        <div class="md:w-1/2 text-left">
+          <h3 class="text-3xl font-bold mb-4">Join Us Now</h3>
+          <p class="mb-6 text-lg">
+            Young Gold Movie Production is on a mission to discover and empower creative talents. We're looking for passionate individuals in acting, video editing, graphics, and more — all committed to making a positive impact. Ready to grow with us? Let's create something great together.
+          </p>
+          <router-link to="/application" class="inline-block bg-black text-white px-8 py-4 font-bold rounded-lg text-base sm:text-xl hover:bg-orange-600 transition duration-300">
+            Apply Now
+          </router-link>
+        </div>
       </div>
     </section>
 
