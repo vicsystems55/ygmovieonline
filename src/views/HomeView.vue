@@ -1,34 +1,4 @@
-<script setup>
-import heroBg from '@/assets/img/33450.jpg';
-import logo from "@/assets/img/logo.png";
-import { ref, onMounted } from "vue";
 
-// Background styling
-const backgroundStyle = {
-  backgroundImage: `url(${heroBg})`,
-  backgroundSize: 'cover',
-  backgroundPosition: 'center center',
-};
-
-// Menu state
-const isMenuOpen = ref(false);
-const toggleMenu = () => {
-  isMenuOpen.value = !isMenuOpen.value;
-};
-
-// Modal state
-const showModal = ref(false);
-const closeModal = () => {
-  showModal.value = false;
-};
-
-// Trigger modal after delay
-onMounted(() => {
-  setTimeout(() => {
-    // showModal.value = true;
-  }, 5000);
-});
-</script>
 
 
 <template>
@@ -121,19 +91,55 @@ onMounted(() => {
   </div>
 
   <div class="relative z-10 max-w-5xl mx-auto text-center px-6">
-    <h2 class="text-4xl sm:text-6xl font-bold text-gold drop-shadow-lg">Coming Soon</h2>
-    <h3 class="mt-4 text-2xl sm:text-4xl font-bold">Babar Johnson</h3>
+    <h2 class="text-4xl sm:text-6xl font-bold text-gold drop-shadow-lg">Showing On Uche Jombo Tv</h2>
+    <h3 class="mt-4 text-2xl sm:text-4xl font-bold">Babara Johnson</h3>
     <p class="mt-6 max-w-2xl mx-auto text-white/90 text-lg">
       A groundbreaking story from YG Movie Productions. Stay tuned for the premiere of our latest film — 
-      <span class="font-semibold">Babar Johnson</span>.
+      <span class="font-semibold">Babara Johnson</span>.
     </p>
-    <a href="#works"
+    <a href="https://www.youtube.com/@uchejombotv"
       class="mt-8 inline-block bg-orange-500 text-black px-8 py-4 font-bold rounded-lg text-base sm:text-xl hover:bg-orange-600 transition duration-300">
-      Explore Our Works
+      WATCH NOW
     </a>
   </div>
 </section>
 
+
+<!-- Actors Slider Section -->
+<section id="cast" class="py-20 bg-black text-white relative">
+  <div class="max-w-7xl mx-auto px-6">
+    <h2 class="text-3xl sm:text-5xl font-bold text-center text-gold mb-10">Meet the Cast</h2>
+
+ <swiper
+  :modules="[Autoplay]"
+  :slides-per-view="1.2"
+  :space-between="20"
+  :breakpoints="{
+    768: { slidesPerView: 3, spaceBetween: 30 }
+  }"
+  :centered-slides="true"
+  :loop="true"
+  :autoplay="{
+    delay: 2500,
+    disableOnInteraction: false
+  }"
+  class="pb-12"
+>
+  <swiper-slide
+    v-for="(poster, index) in castImages"
+    :key="index"
+    class="flex justify-center"
+  >
+    <img
+      :src="poster"
+      :alt="`Cast Poster ${index + 1}`"
+      class="rounded-2xl shadow-2xl w-full max-w-[400px] object-cover"
+    />
+  </swiper-slide>
+</swiper>
+
+  </div>
+</section>
 
 
     <section id="about" class="py-20 px-6 bg-black">
@@ -216,6 +222,8 @@ onMounted(() => {
       </div>
     </section>
 
+    <button @click="submitForm">hidden</button>
+
     <!-- Footer -->
     <footer class="bg-black text-center py-8">
       <div class="text-white">
@@ -256,89 +264,115 @@ onMounted(() => {
   </div>
 </template>
 
-<script>
-import axios from 'axios';
+<script setup>
+import { ref, onMounted } from "vue";
+import axios from "axios";
 
-export default {
-  data() {
-    return {
-      isLoading: false,
-      formData: {
-        full_name: '',
-        email: '',
-        phone: '',
-        address: '',
-        facebook: '',
-        instagram: '',
-        tiktok: '',
-        twitter: '',
-        other: '',
-      },
-    };
-  },
-  methods: {
-    async submitForm() {
-      this.isLoading = true;
+// Assets
+import heroBg from "@/assets/img/33450.jpg";
+import logo from "@/assets/img/logo.png";
+import poster1 from "@/assets/img/poster (1).jpg";
+import poster2 from "@/assets/img/poster (2).jpg";
+import poster3 from "@/assets/img/poster (3).jpg";
+import poster4 from "@/assets/img/poster (4).jpg";
+import poster5 from "@/assets/img/poster (5).jpg";
 
-      try {
-        const formData = new FormData(); // Create a FormData object
-        for (const key in this.formData) {
-          formData.append(key, this.formData[key]); // Append form data
-        }
+// Swiper
+import { Swiper, SwiperSlide } from "swiper/vue";
+import { Autoplay } from "swiper/modules";
+import "swiper/css";
 
-        // Handle file upload separately
-        const fileInput = this.$refs.file;
-        if (fileInput.files.length > 0) {
-          formData.append('file', fileInput.files[0]);
-        }
+// Register Swiper modules
+// const modules = [Autoplay];
 
+// Background styling
+const backgroundStyle = {
+  backgroundImage: `url(${heroBg})`,
+  backgroundSize: "cover",
+  backgroundPosition: "center center",
+};
 
-        const response = await axios.post(process.env.VUE_APP_URL + '/api/yg-membership-submission', formData, {
-          headers: {
-            'Content-Type': 'multipart/form-data', // Important for file uploads
-          },
-        });
+// State: menu
+const isMenuOpen = ref(false);
+const toggleMenu = () => (isMenuOpen.value = !isMenuOpen.value);
 
+// State: modal
+const showModal = ref(false);
+const closeModal = () => (showModal.value = false);
 
+// Trigger modal after delay (optional)
+onMounted(() => {
+  setTimeout(() => {
+    // showModal.value = true;
+  }, 5000);
+});
 
-        console.log('Success:', response.data);
-        alert('Membership application submitted successfully!');
+// Cast posters
+const castImages = [poster1, poster2, poster3, poster4, poster5];
 
+// Form state
+const isLoading = ref(false);
+const formData = ref({
+  full_name: "",
+  email: "",
+  phone: "",
+  address: "",
+  facebook: "",
+  instagram: "",
+  tiktok: "",
+  twitter: "",
+  other: "",
+});
 
-        // Reset form data (except file input)
-        for (const key in this.formData) {
-          this.formData[key] = '';
-        }
-        fileInput.value = ''; // Clear the file input
+// Submit handler
+const submitForm = async (fileInputRef) => {
+  isLoading.value = true;
 
-        return this.$router.push('/success');
+  try {
+    const form = new FormData();
+    for (const key in formData.value) {
+      form.append(key, formData.value[key]);
+    }
 
+    // Handle file upload
+    if (fileInputRef?.files?.length > 0) {
+      form.append("file", fileInputRef.files[0]);
+    }
 
-      } catch (error) {
-        console.error('Error:', error);
-
-        if (error.response && error.response.data && error.response.data.errors) {
-          const errors = error.response.data.errors;
-          let errorMessage = "";
-
-          // Construct a more detailed error message
-          for (const field in errors) {
-            errors[field].forEach(message => {
-              errorMessage += `${message}\n`; // Add each error message with a newline
-            });
-          }
-
-          alert(errorMessage.trim()); // Display the combined error message, trimming any trailing newline
-        } else if (error.response && error.response.data && error.response.data.message) {
-          // Handle cases where the backend sends a single "message" string
-          alert(error.response.data.message);
-        } else {
-          alert('An unexpected error occurred. Please try again.'); // Generic error message
-        }
-      } finally {
-        this.isLoading = false;
+    const response = await axios.post(
+      `${import.meta.env.VITE_APP_URL}/api/yg-membership-submission`,
+      form,
+      {
+        headers: { "Content-Type": "multipart/form-data" },
       }
-    },
-  },
+    );
+
+    console.log("Success:", response.data);
+    alert("Membership application submitted successfully!");
+
+    // Reset form
+    for (const key in formData.value) {
+      formData.value[key] = "";
+    }
+    if (fileInputRef) fileInputRef.value = "";
+
+    return window.location.href = "/success";
+  } catch (error) {
+    console.error("Error:", error);
+    if (error.response?.data?.errors) {
+      const errors = error.response.data.errors;
+      const errorMessage = Object.values(errors)
+        .flat()
+        .join("\n");
+      alert(errorMessage);
+    } else if (error.response?.data?.message) {
+      alert(error.response.data.message);
+    } else {
+      alert("An unexpected error occurred. Please try again.");
+    }
+  } finally {
+    isLoading.value = false;
+  }
 };
 </script>
+
