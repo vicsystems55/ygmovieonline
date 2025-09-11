@@ -98,6 +98,42 @@ onMounted(() => {
         </a>
       </div>
     </section>
+    <!-- New Movie Section -->
+<section id="new-movie" class="relative py-20 bg-black text-white">
+  <!-- Background image (switches for desktop/mobile) -->
+  <div 
+    class="absolute inset-0 bg-contain bg-center"
+    :style="{
+      backgroundImage: `url(${require('@/assets/img/babarajohnson.jpg')})`
+    }"
+  >
+    <div class="absolute inset-0 bg-black/70"></div>
+  </div>
+
+  <!-- Mobile-specific background -->
+  <div 
+    class="absolute inset-0 bg-contain bg-no-repeat bg-center md:hidden"
+    :style="{
+      backgroundImage: `url(${require('@/assets/img/babarajohnson_mobile.png')})`
+    }"
+  >
+    <div class="absolute inset-0 bg-black/70"></div>
+  </div>
+
+  <div class="relative z-10 max-w-5xl mx-auto text-center px-6">
+    <h2 class="text-4xl sm:text-6xl font-bold text-gold drop-shadow-lg">Coming Soon</h2>
+    <h3 class="mt-4 text-2xl sm:text-4xl font-bold">Babar Johnson</h3>
+    <p class="mt-6 max-w-2xl mx-auto text-white/90 text-lg">
+      A groundbreaking story from YG Movie Productions. Stay tuned for the premiere of our latest film — 
+      <span class="font-semibold">Babar Johnson</span>.
+    </p>
+    <a href="#works"
+      class="mt-8 inline-block bg-orange-500 text-black px-8 py-4 font-bold rounded-lg text-base sm:text-xl hover:bg-orange-600 transition duration-300">
+      Explore Our Works
+    </a>
+  </div>
+</section>
+
 
 
     <section id="about" class="py-20 px-6 bg-black">
