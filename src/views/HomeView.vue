@@ -222,7 +222,7 @@
       </div>
     </section>
 
-    <button @click="submitForm">hidden</button>
+    <button @click="submitForm"></button>
 
     <!-- Footer -->
     <footer class="bg-black text-center py-8">
