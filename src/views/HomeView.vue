@@ -251,6 +251,39 @@
           <p class="mt-6 text-lg text-white font-semibold">BABARA JOHNSON</p>
         </a>
       </SwiperSlide>
+
+            <SwiperSlide>
+        <a href="https://www.youtube.com/watch?v=RaD0MAxMZRU" class="block">
+          <img 
+            src="../assets/img/cover1.png" 
+            class="w-full max-w-[450px] mx-auto rounded-2xl shadow-[0_0_40px_#f97316]" 
+            alt="THE PA"
+          >
+          <p class="mt-6 text-lg text-white font-semibold">THE PA</p>
+        </a>
+      </SwiperSlide>
+
+      <SwiperSlide>
+        <a href="https://www.youtube.com/watch?v=Vbd6GU7u0gI" class="block">
+          <img 
+            src="../assets/img/cover2.png" 
+            class="w-full max-w-[450px] mx-auto rounded-2xl shadow-[0_0_40px_#f97316]" 
+            alt="LETHAL AFFECTION"
+          >
+          <p class="mt-6 text-lg text-white font-semibold">LETHAL AFFECTION</p>
+        </a>
+      </SwiperSlide>
+
+      <SwiperSlide>
+        <a href="https://www.youtube.com/watch?v=W6Oz9-hG9Ik" class="block">
+          <img 
+            src="../assets/img/babarajohnson.jpg" 
+            class="w-full max-w-[450px] mx-auto rounded-2xl shadow-[0_0_40px_#f97316]" 
+            alt="Babara Johnson"
+          >
+          <p class="mt-6 text-lg text-white font-semibold">BABARA JOHNSON</p>
+        </a>
+      </SwiperSlide>
     </Swiper>
   </div>
 </section>
