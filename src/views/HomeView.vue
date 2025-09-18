@@ -201,43 +201,137 @@
       </div>
     </section>
 
-    <!-- Our Works Section -->
-    <section id="works" class="py-20 px-6 bg-dark">
-      <div class="max-w-4xl mx-auto ">
-        <h3 class="text-3xl font-bold text-gold text-center">Our Works</h3>
-        <div class="mt-8 grid grid-cols-1 md:grid-cols-2 gap-6">
-          <div>
-            <a href="https://www.youtube.com/watch?v=RaD0MAxMZRU">
-              <img src="../assets/img/cover1.png" class="w-full rounded">
-              <p class="mt-2">THE PA</p>
-            </a>
-          </div>
-          <div>
-            <a href="https://www.youtube.com/watch?v=Vbd6GU7u0gI">
-              <img src="../assets/img/cover2.png" class="w-full rounded">
-              <p class="mt-2">LETHAL AFFECTION</p>
-            </a>
-          </div>
-        </div>
-      </div>
-    </section>
+<!-- Our Works Section -->
+<section id="works" class="py-28 px-8 bg-black relative">
+  <div class="max-w-6xl mx-auto text-center">
+    <h3 class="text-4xl sm:text-5xl font-bold text-white mb-14">Our Works</h3>
 
-    <button @click="submitForm"></button>
+    <Swiper
+      :modules="[Autoplay]"
+      :slides-per-view="1.2"
+      :space-between="30"
+      :loop="true"
+      :centered-slides="true"
+      :autoplay="{ delay: 2500, disableOnInteraction: false }"
+      :breakpoints="{
+        768: { slidesPerView: 2, spaceBetween: 40 },
+        1024: { slidesPerView: 3, spaceBetween: 50 }
+      }"
+      class="pb-16"
+    >
+      <SwiperSlide>
+        <a href="https://www.youtube.com/watch?v=RaD0MAxMZRU" class="block">
+          <img 
+            src="../assets/img/cover1.png" 
+            class="w-full max-w-[450px] mx-auto rounded-2xl shadow-[0_0_40px_#f97316]" 
+            alt="THE PA"
+          >
+          <p class="mt-6 text-lg text-white font-semibold">THE PA</p>
+        </a>
+      </SwiperSlide>
 
-    <!-- Footer -->
-    <footer class="bg-black text-center py-8">
-      <div class="text-white">
-        <h3 class="text-xl font-bold text-gold">YG Movie Productions</h3>
-        <p class="mt-2">Contact: younggoldproductions@gmail.com</p>
-        <div class="mt-4 space-x-4">
-          <a href="https://www.facebook.com/profile.php?id=61559220190668" class="text-gold"><i
-              class="fab fa-facebook"></i></a>
-          <a href="https://www.instagram.com/younggold_mp/" class="text-gold"><i class="fab fa-instagram"></i></a>
-          <a href="https://www.youtube.com/@YOUNGGOLDMOVIEPRODUCTION" class="text-gold"><i
-              class="fab fa-youtube"></i></a>
-        </div>
+      <SwiperSlide>
+        <a href="https://www.youtube.com/watch?v=Vbd6GU7u0gI" class="block">
+          <img 
+            src="../assets/img/cover2.png" 
+            class="w-full max-w-[450px] mx-auto rounded-2xl shadow-[0_0_40px_#f97316]" 
+            alt="LETHAL AFFECTION"
+          >
+          <p class="mt-6 text-lg text-white font-semibold">LETHAL AFFECTION</p>
+        </a>
+      </SwiperSlide>
+
+      <SwiperSlide>
+        <a href="https://www.youtube.com/watch?v=W6Oz9-hG9Ik" class="block">
+          <img 
+            src="../assets/img/babarajohnson.jpg" 
+            class="w-full max-w-[450px] mx-auto rounded-2xl shadow-[0_0_40px_#f97316]" 
+            alt="Babara Johnson"
+          >
+          <p class="mt-6 text-lg text-white font-semibold">BABARA JOHNSON</p>
+        </a>
+      </SwiperSlide>
+    </Swiper>
+  </div>
+</section>
+
+
+
+<hr>
+
+<!-- Footer -->
+<footer class="bg-black text-white pt-16 pb-8">
+  <div class="max-w-7xl mx-auto px-6 grid grid-cols-1 md:grid-cols-3 gap-12 text-left">
+
+    <!-- Column 1: Logo & About -->
+    <div>
+      <div class="flex items-center space-x-3 mb-4">
+        <img src="../assets/img/logo.png" alt="YG Logo" class="h-12">
+        <h3 class="text-2xl font-bold text-gold">YG Movie Productions</h3>
       </div>
-    </footer>
+      <p class="text-gray-300">
+        YG Movie Productions is committed to storytelling, talent development, and creative filmmaking that inspires audiences worldwide.
+      </p>
+    </div>
+
+    <!-- Column 2: Important Links -->
+    <div>
+      <h4 class="text-xl font-semibold text-gold mb-4">Important Links</h4>
+      <ul class="space-y-2">
+        <li><a href="#hero" class="hover:text-orange-500 transition">Home</a></li>
+        <li><a href="#about" class="hover:text-orange-500 transition">About Us</a></li>
+        <li><a href="#works" class="hover:text-orange-500 transition">Our Works</a></li>
+        <li><a href="#join" class="hover:text-orange-500 transition">Join Us</a></li>
+      </ul>
+    </div>
+
+    <!-- Column 3: Social Media & Newsletter -->
+    <div>
+      <h4 class="text-xl font-semibold text-gold mb-4">Stay Connected</h4>
+      <div class="flex space-x-4 mb-6">
+        <a href="https://www.facebook.com/profile.php?id=61559220190668" class="text-gold text-2xl hover:text-orange-500"><i class="fab fa-facebook"></i></a>
+        <a href="https://www.instagram.com/younggold_mp/" class="text-gold text-2xl hover:text-orange-500"><i class="fab fa-instagram"></i></a>
+        <a href="https://www.youtube.com/@YOUNGGOLDMOVIEPRODUCTION" class="text-gold text-2xl hover:text-orange-500"><i class="fab fa-youtube"></i></a>
+      </div>
+
+      <form class="flex flex-col sm:flex-row gap-3">
+        <input 
+          type="email" 
+          placeholder="Enter your email" 
+          class="px-4 py-3 rounded-lg text-black w-full sm:flex-1 focus:outline-none"
+        >
+        <button 
+          type="submit" 
+          class="bg-orange-500 hover:bg-orange-600 text-black font-bold px-6 py-3 rounded-lg"
+        >
+          Subscribe
+        </button>
+      </form>
+    </div>
+  </div>
+
+  <!-- Bottom Line -->
+  <div class="border-t border-gray-700 mt-12 pt-6 text-center text-sm text-gray-400">
+    Developed by 
+    <a href="https://vicsystems.us" target="_blank" class="text-gold hover:text-orange-500 font-semibold">
+      Vicsystems Technologies Ltd.
+    </a>
+  </div>
+</footer>
+
+<!-- WhatsApp Sticky Button -->
+<a 
+  href="https://wa.me/2348037835670?text=Hello%2C%20I%20will%20like%20to%20learn%20more%20about%20your%20company" 
+  target="_blank"
+  class="fixed bottom-6 right-6 bg-green-500 hover:bg-green-600 text-white rounded-full shadow-lg p-4 z-50 transition transform hover:scale-110"
+  aria-label="Chat on WhatsApp"
+>
+  <i class="fab fa-whatsapp text-3xl"></i>
+</a>
+
+
+    <button class="d-none" @click="submitForm"></button>
+
 
     <!-- New Movie Alert Modal -->
 <div v-if="showModal" class="fixed inset-0 bg-black/80 z-50 flex items-center justify-center p-4">
