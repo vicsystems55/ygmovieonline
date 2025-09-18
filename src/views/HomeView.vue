@@ -97,7 +97,7 @@
       A groundbreaking story from YG Movie Productions. Stay tuned for the premiere of our latest film — 
       <span class="font-semibold">Babara Johnson</span>.
     </p>
-    <a href="https://www.youtube.com/@uchejombotv"
+    <a href="https://www.youtube.com/watch?v=W6Oz9-hG9Ik"
       class="mt-8 inline-block bg-orange-500 text-black px-8 py-4 font-bold rounded-lg text-base sm:text-xl hover:bg-orange-600 transition duration-300">
       WATCH NOW
     </a>
